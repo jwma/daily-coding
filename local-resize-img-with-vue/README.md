@@ -32,6 +32,8 @@ index.html有你所需要的一切。
  
 localResizeIMG在调用时，就可以指定压缩后图片的宽度高度以及质量（[详细参考文档][4]），至于要怎么把数据提交到后台，可以参考该库的wiki中提到的[方案][5]，一切都很简单。
 
+**[演示地址][6]**
+
 本文的解决方法并不是唯一，也不一定是最好，在使用相关的框架/库时遇到的问题，可以去相应的Github仓库查看issue或者wiki。
 
 
@@ -40,3 +42,4 @@ localResizeIMG在调用时，就可以指定压缩后图片的宽度高度以及
   [3]: https://github.com/twbs/bootstrap
   [4]: https://github.com/think2011/localResizeIMG/wiki/2.-%E5%8F%82%E6%95%B0%E6%96%87%E6%A1%A3
   [5]: https://github.com/think2011/localResizeIMG/wiki/1.-%E5%90%8E%E7%AB%AF%E5%A4%84%E7%90%86
+  [6]: http://dc.majiawei.com/local-resize-img-with-vue/index.html
