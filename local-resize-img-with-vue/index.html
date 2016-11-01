@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta charset="UTF-8">
+    <title>前端图片压缩（结合Vue.js）</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container-fluid" id="app">
+    <div class="row">
+        <div class="col-xs-6">
+            <h3>上传区域</h3>
+            <input class="form-control" type="file" accept="image/jpg,image/jpeg,image/png" @change="doUpload">
+        </div>
+        <div class="col-xs-3">
+            <h3>预览区域</h3>
+            <p v-show="imgs.length == 0">请选择一张图片</p>
+            <ul v-show="imgs.length > 0" class="list-group">
+                <li v-for="(img, idx) in imgs" class="list-group-item">
+                    <a href="javascript:" class="thumbnail">
+                        <img :src="img" alt="上传图片" style="width: 50%;">
+                    </a>
+                    <a href="javascript:" class="btn btn-xs btn-danger" @click="remove(idx)">删除</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script src="../node_modules/lrz/dist/lrz.bundle.js"></script>
+<script src="../node_modules/vue/dist/vue.js"></script>
+<!--<script src="../node_modules/vue/dist/vue.min.js"></script>-->
+<script>
+    window.onload = function () {
+        new Vue({
+            el: '#app',
+            data: {
+                imgs: []
+            },
+            methods: {
+                doUpload: function (e) {
+                    var self = this
+                    var file = e.target.files[0]
+
+                    lrz(file, {
+                        quality: 0.6
+                    })
+                            .then(function (rst) {
+                                self.imgs.push(rst.base64)
+                            })
+                            .catch(function (err) {
+                                console.log(err)
+                                alert('压缩失败')
+                            })
+                            .always(function () {
+                                // 清空文件上传控件的值
+                                e.target.value = null
+                            })
+                },
+                remove: function (idx) {
+                    this.imgs.splice(idx, 1)
+                }
+            }
+        })
+    }
+</script>
+</body>
+</html>

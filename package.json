@@ -1,0 +1,24 @@
+{
+  "name": "daily-coding",
+  "version": "1.0.0",
+  "description": "用于存放平时的一些用例代码",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jwma/daily-coding.git"
+  },
+  "author": "MJ",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jwma/daily-coding/issues"
+  },
+  "homepage": "https://github.com/jwma/daily-coding#readme",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "lrz": "^4.9.40",
+    "vue": "^2.0.3"
+  }
+}
