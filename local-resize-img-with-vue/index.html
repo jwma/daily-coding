@@ -7,22 +7,68 @@
 </head>
 <body>
 <div class="container-fluid" id="app">
-    <div class="row">
+    <div class="row" style="margin-top: 30px;">
         <div class="col-xs-6">
-            <h3>上传区域</h3>
-            <input class="form-control" type="file" accept="image/jpg,image/jpeg,image/png" @change="doUpload">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title">上传区域</div>
+                </div>
+                <div class="panel-body">
+                    <input class="form-control" type="file" accept="image/jpg,image/jpeg,image/png" @change="doUpload">
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title">参数配置区域</div>
+                </div>
+                <div class="panel-body">
+                    <a href="https://github.com/think2011/localResizeIMG/wiki/2.-%E5%8F%82%E6%95%B0%E6%96%87%E6%A1%A3"
+                       target="_blank">参数文档</a>
+                    <table class="table">
+                        <tr>
+                            <td>宽度</td>
+                            <td>
+                                <input type="number" min="100" max="500" v-model="config.width">
+                                图片最大不超过的宽度，默认为原图宽度，<label class="label label-info">当前: {{config.width}}</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>高度</td>
+                            <td>
+                                <input type="number" min="100" max="500" v-model="config.height">
+                                图片最大不超过的高度，默认为原图高度，<label class="label label-info">当前: {{config.height}}</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>质量</td>
+                            <td>
+                                <input type="range" step="0.1" min="0" max="1" v-model="config.quality">
+                                取值范围：0 - 1，<label class="label label-info">当前: {{config.quality}}</label>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
         </div>
-        <div class="col-xs-3">
-            <h3>预览区域</h3>
-            <p v-show="imgs.length == 0">请选择一张图片</p>
-            <ul v-show="imgs.length > 0" class="list-group">
-                <li v-for="(img, idx) in imgs" class="list-group-item">
-                    <a href="javascript:" class="thumbnail">
-                        <img :src="img" alt="上传图片" style="width: 50%;">
-                    </a>
-                    <a href="javascript:" class="btn btn-xs btn-danger" @click="remove(idx)">删除</a>
-                </li>
-            </ul>
+        <div class="col-xs-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title">预览区域</div>
+                </div>
+                <div class="panel-body">
+                    <p v-show="imgs.length == 0">请选择一张图片</p>
+
+                    <div class="row" v-show="imgs.length > 0">
+                        <div v-for="(img, idx) in imgs" class="col-xs-6" style="margin-top: 10px;">
+                            <a href="javascript:" class="thumbnail">
+                                <img :src="img" alt="上传图片" style="width: 50%;">
+                            </a>
+                            <a href="javascript:" class="btn btn-xs btn-danger" @click="remove(idx)">删除</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -34,6 +80,11 @@
         new Vue({
             el: '#app',
             data: {
+                config: {
+                    width: 300,
+                    height: 150,
+                    quality: 0.6
+                },
                 imgs: []
             },
             methods: {
@@ -41,9 +92,7 @@
                     var self = this
                     var file = e.target.files[0]
 
-                    lrz(file, {
-                        quality: 0.6
-                    })
+                    lrz(file, self.config)
                             .then(function (rst) {
                                 self.imgs.push(rst.base64)
                             })
