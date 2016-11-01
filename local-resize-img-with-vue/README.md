@@ -32,7 +32,7 @@ index.html有你所需要的一切。
 
 至于要怎么把数据提交到后台，可以参考 [localResizeIMG][1] wiki中提到的方案，一切都很简单。
 
-本文的解决方法并不是唯一，也不一定是最好，在使用相关的框架/库时遇到的问题，可以去相应的Github查看issue或者wiki。
+本文的解决方法并不是唯一，也不一定是最好，在使用相关的框架/库时遇到的问题，可以去相应的Github仓库查看issue或者wiki。
 
 
   [1]: https://github.com/think2011/localResizeIMG
