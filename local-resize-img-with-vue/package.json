@@ -1,0 +1,13 @@
+{
+  "name": "local-resize-img-with-vue",
+  "version": "1.0.0",
+  "description": "结合Vue.js的前端图片压缩方案",
+  "author": "MJ",
+  "license": "MIT",
+  "homepage": "https://github.com/jwma/daily-coding/tree/master/local-resize-img-with-vue",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "lrz": "^4.9.40",
+    "vue": "^2.0.3"
+  }
+}
