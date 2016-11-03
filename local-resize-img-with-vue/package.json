@@ -8,6 +8,7 @@
   "dependencies": {
     "bootstrap": "^3.3.7",
     "lrz": "^4.9.40",
-    "vue": "^2.0.3"
+    "vue": "^2.0.3",
+    "vue-resource": "^1.0.3"
   }
 }

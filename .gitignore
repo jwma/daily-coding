@@ -1,2 +1,7 @@
 .idea/
+.DS_Store
 node_modules/
+
+# local-resize-img-with-vue
+local-resize-img-with-vue/upload/
+!local-resize-img-with-vue/upload/.gitkeep
