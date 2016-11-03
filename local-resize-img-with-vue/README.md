@@ -1,5 +1,9 @@
-#这是一个比较醒目的位置
-index.html有你所需要的一切。
+#部署
+
+`npm run install` 安装依赖，访问index.html即可。
+
+如果需要运行indexWithHandle.html，则可以运行 `php -S 127.0.0.1:8080` 开启一个PHP服务器，然后在浏览器访问 `localhost:8080/indexWithHandle.html` 即可，PHP处理上传的逻辑都在 upload_handler.php 文件中。
+
 
 #为什么要这么做？
 在移动Web蓬勃发展的今天，有太多太多的应用需要让用户在移动Web上传图片文件了，正因如此，我们有些困难必须去攻克：
