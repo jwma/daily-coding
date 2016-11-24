@@ -1,0 +1,13 @@
+.block {
+    width: 90%;
+    margin: 60rpx auto 0;
+}
+
+.title {
+    font-size: 50rpx;
+    color: #555;
+}
+
+button {
+    margin-top: 15rpx;
+}

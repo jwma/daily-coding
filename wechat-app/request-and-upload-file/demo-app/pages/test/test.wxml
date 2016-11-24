@@ -1,0 +1,15 @@
+<view class="block">
+    <text class="title">wx.request</text>
+    <button bindtap="doWxRequest" data-code="200">200</button>
+    <button bindtap="doWxRequest" data-code="500">500</button>
+</view>
+<view class="block">
+    <text class="title">wx.uploadFile</text>
+    <button bindtap="doWxUploadFile" data-code="200">200</button>
+    <button bindtap="doWxUploadFile" data-code="400">400</button>
+    <button bindtap="doWxUploadFile" data-code="500">500</button>
+</view>
+<view class="block">
+    <view class="title">Output:</view>
+    <text style="font-size: 30rpx;">{{output}}</text>
+</view>
