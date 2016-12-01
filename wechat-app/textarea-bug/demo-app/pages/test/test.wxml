@@ -1,0 +1,26 @@
+<view style="width: 90%; margin: 20rpx auto 0;">
+    <text>textarea 组件 Bug</text>
+    <textarea placeholder="input content" value="{{inputContent}}" style="margin-top: 30rpx; border: 1rpx solid #ddd; width: 100%;"/>
+    <text style="color: #999; font-size: 28rpx;">上面的 textarea 组件 绑定了 inputContent 属性</text>
+</view>
+
+<view style="width: 90%; margin: 50rpx auto 0;">
+    <button bindtap="clearInputContent" data-mode="1">清空内容 方式1</button>
+    <text style="color: #999; font-size: 28rpx;">方式1，执行 this.setData({inputContent: ''})</text>
+</view>
+
+<view style="width: 90%; margin: 50rpx auto 0;">
+    <button bindtap="clearInputContent" data-mode="2">清空内容 方式2</button>
+    <text style="color: #999; font-size: 28rpx;">方式2，
+    执行 this.setData({inputContent: ' '})
+    执行 this.setData({inputContent: ''})
+    </text>
+</view>
+
+<view style="width: 90%; margin: 50rpx auto 0;">
+    <button bindtap="clearInputContent" data-mode="3">清空内容 方式3</button>
+    <text style="color: #999; font-size: 28rpx;">方式3，
+    执行 this.setData({inputContent: ' '})
+    执行 setTimeout(_ => { this.setData({inputContent: ''}) }, 300)
+    </text>
+</view>
