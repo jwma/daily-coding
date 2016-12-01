@@ -1,5 +1,7 @@
 微信小程序公测也有段时间了，但是里面的坑踩了一个又一个，心也是够累的。本文说说关于 textarea 组件的 bug。（注：本文提及的 bug，至少在 2016-12-1日还存在）
 
+上一篇：[微信小程序之踩坑之旅一，wx.request 和 wx.uploadFile][1]
+
 测试时使用到：
  - 微信web开发者工具 v0.11.112301
  - 手机预览，iPhone6s，微信6.3.31
@@ -8,7 +10,7 @@
 
 ## 需求：清空 textarea 组件的内容。
 
-需求是多么的简单，实现起来想想都觉得好简单（偷笑.jpg），有童鞋马上拒收回答，提出了一个解决方案。
+需求是多么的简单，实现起来想想都觉得好简单（偷笑.jpg），有童鞋马上举手回答，提出了一个解决方案。
 
 ## 方案1
 
@@ -30,18 +32,29 @@
 方案已经说了，但既然说是踩坑之旅，那么肯定就没有方案所说的那么简单，没点坑就不像话了，下面会提供四张动图，都是根据方案2去处理的，请仔细对比。
 
 #### 在微信web开发工具时，所有实现方式：
-![ondevtools.gif][1]
+你会看到：
+
+ 1. 方式1，清空不了 textarea 组件的内容
+ 2. 方式2，可以清空内容
+ 3. 方式3，可以清空内容
+
+上面说到方式2和方式3都可以清空内容，那么为什么会有方式3这种“搞笑”的写法呢？因为方式2这种写法在手机预览时会有 bug，挺好笑的 bug，详细可以看第三、第四张运行图。
+
+![ondevtools.gif][2]
 #### 在手机预览时，方式1：
-![1.gif][2]
+跟在开发工具运行时的情况一样，也是清空不了。
+![1.gif][3]
 #### 在手机预览时，方式2：
-![2.gif][3]
+这就是的bug，清空是没问题的，但童鞋们可以留意一下 textarea 组件的 placeholder 的变化，清空之后，一时有一时没有，为了解决这个 bug，于是就有了方式3的写法。
+![2.gif][4]
 #### 在手机预览时，方式3：
-![3.gif][4]
+加了个 setTimeout，在300毫秒后再将绑定的属性设置为空字符串。
+![3.gif][5]
 
-### 代码
-在 demo-app 目录下
+看到这里，相信童鞋们都知道是怎么回事了，又是时候吐槽一下微信开发团队了，你丫快点修复这种莫名其妙的 bug！
 
-  [1]: http://img.majiawei.com/ondevtools.gif
-  [2]: http://img.majiawei.com/oniPhone1.gif
-  [3]: http://img.majiawei.com/oniPhone2.gif
-  [4]: http://img.majiawei.com/oniPhone3.gif
+  [1]: https://segmentfault.com/a/1190000007588905
+  [2]: http://img.majiawei.com/ondevtools.gif
+  [3]: http://img.majiawei.com/oniPhone1.gif
+  [4]: http://img.majiawei.com/oniPhone2.gif
+  [5]: http://img.majiawei.com/oniPhone3.gif
