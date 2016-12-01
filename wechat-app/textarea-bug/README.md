@@ -30,84 +30,18 @@
 方案已经说了，但既然说是踩坑之旅，那么肯定就没有方案所说的那么简单，没点坑就不像话了，下面会提供四张动图，都是根据方案2去处理的，请仔细对比。
 
 #### 在微信web开发工具时，所有实现方式：
-![图片描述][1]
+![ondevtools.gif][1]
 #### 在手机预览时，方式1：
-![图片描述][2]
+![1.gif][2]
 #### 在手机预览时，方式2：
-
+![2.gif][3]
 #### 在手机预览时，方式3：
-![图片描述][3]
+![3.gif][4]
 
 ### 代码
-有人说不上代码不厚道，其实更想大家去我的仓库看，因为顺手就可以 star 一下，哈哈哈。
-### 处理页面的js，test.js
-```javascript
-Page({
-  data: {
-    inputContent: ''
-  },
-  clearInputContent(e) {
-    const mode = parseInt(e.target.dataset.mode)
+在 demo-app 目录下
 
-    switch (mode) {
-      case 1:
-        this.setData({
-          inputContent: ''
-        })
-        break;
-      case 2:
-        this.setData({
-          inputContent: ' '
-        })
-        this.setData({
-          inputContent: ''
-        })
-        break;
-      case 3:
-        this.setData({
-          inputContent: ' '
-        })
-        setTimeout(_ => {
-          this.setData({
-            inputContent: ''
-          })
-        }, 300)
-        break;
-    }
-  }
-})
-```
-### 页面UI，test.wxml
-```xml
-<view style="width: 90%; margin: 20rpx auto 0;">
-    <text>textarea 组件 bug</text>
-    <textarea placeholder="input content" value="{{inputContent}}" style="margin-top: 30rpx; border: 1rpx solid #ddd; width: 100%;"/>
-    <text style="color: #999; font-size: 28rpx;">上面的 textarea 组件 绑定了 inputContent 属性</text>
-</view>
-
-<view style="width: 90%; margin: 50rpx auto 0;">
-    <button bindtap="clearInputContent" data-mode="1">清空内容 方式1</button>
-    <text style="color: #999; font-size: 28rpx;">方式1，执行 this.setData({inputContent: ''})</text>
-</view>
-
-<view style="width: 90%; margin: 50rpx auto 0;">
-    <button bindtap="clearInputContent" data-mode="2">清空内容 方式2</button>
-    <text style="color: #999; font-size: 28rpx;">方式2，
-    执行 this.setData({inputContent: ' '})
-    执行 this.setData({inputContent: ''})
-    </text>
-</view>
-
-<view style="width: 90%; margin: 50rpx auto 0;">
-    <button bindtap="clearInputContent" data-mode="3">清空内容 方式3</button>
-    <text style="color: #999; font-size: 28rpx;">方式3，
-    执行 this.setData({inputContent: ' '})
-    执行 setTimeout(_ => { this.setData({inputContent: ''}) }, 300)
-    </text>
-</view>
-```
-
-
-  [1]: /img/bVGiyO
-  [2]: /img/bVGiBr
-  [3]: /img/bVGiCt
+  [1]: http://img.majiawei.com/ondevtools.gif
+  [2]: http://img.majiawei.com/oniPhone1.gif
+  [3]: http://img.majiawei.com/oniPhone2.gif
+  [4]: http://img.majiawei.com/oniPhone3.gif
