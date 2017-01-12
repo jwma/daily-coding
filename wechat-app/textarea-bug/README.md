@@ -64,7 +64,7 @@
 看到这里，相信童鞋们都知道是怎么回事了，又是时候吐槽一下微信开发团队了，你丫快点修复这种莫名其妙的 bug！
 
   [1]: https://segmentfault.com/a/1190000007588905
-  [2]: http://img.majiawei.com/ondevtools.gif
-  [3]: http://img.majiawei.com/oniPhone1.gif
-  [4]: http://img.majiawei.com/oniPhone2.gif
-  [5]: http://img.majiawei.com/oniPhone3.gif
+  [2]: http://img.majiawei.com/images/ondevtools.gif
+  [3]: http://img.majiawei.com/images/oniPhone1.gif
+  [4]: http://img.majiawei.com/images/oniPhone2.gif
+  [5]: http://img.majiawei.com/images/oniPhone3.gif

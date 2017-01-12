@@ -3,7 +3,7 @@
 
 接口部分都放到了 app.php，在 app.php 所在的目录运行 `php -S 127.0.0.1:8080` 即可。
 
-微信小程序公测也有段时间了，但是里面的坑踩了一个又一个，心也是够累的。本文说说关于 wx.request 和 wx.uploadFile 对请求响应的不同表现。
+微信小程序公测也有段时间了，但是里面的坑踩了一个又一个，心也是够累的。本文说说关于 wx.request 和 wx.uploadFile 对请求响应的不同表现。（注：该坑直到文章发布的那天还存在）
 
 #文章内容
 
@@ -25,6 +25,10 @@ wx.request 发出请求后，无论请求接口返回的 HTTP 状态码（200也
 wx.uploadFile 发出请求后，如果请求接口返回的 HTTP 状态码为200时，会进入 success 回调，而返回其他状态码（如400、405、500等）时，会进入 fail 回调（黑人问号.jpg）。
 
 虽然这不是啥大问题，但在微信小程序的开发过程中，上面提到的问题还是会让人一下子摸不着路子。个人觉得接口保持一致性还是很重要的，不过游戏的制定者不是我们，只能希望越改越好吧。
+
+感觉不坑，对吧？下面其实才是坑人的地方。
+
+本文得出结果是在微信开发者工具上运行的结果，跟实际手机预览得出的结果又有出入（微信你搞什么鬼！！！），如果在手机上预览（我是在iOS上预览的）的话会变成—— wx.request 和 wx.uploadFile 的回调被调用的情况是一样的。
 
   [1]: https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-request.html
   [2]: https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-file.html#wxuploadfileobject
