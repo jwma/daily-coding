@@ -40,7 +40,7 @@ router.afterEach(route => {
 恰巧就是2017年3月27日 iOS 端微信的更新，也恰巧是我今天才遇到这个问题，正是因为这么巧，所以才写了这篇文章。
 
 ### 撸起袖子干
-虽然更新之后微信且切换到 WKWebView 之后是可以解决这个问题，但为了适配那些没有更新微信且还用着 UIWebView 的设备，所以还是需要写点 hack 的代码：
+虽然更新微信且切换到 WKWebView 之后是可以解决这个问题，但为了适配那些没有更新微信且还用着 UIWebView 的设备，所以还是需要写点 hack 的代码：
 ```javascript
 // 省略...
 router.afterEach(route => {
