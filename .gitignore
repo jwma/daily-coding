@@ -1,6 +1,7 @@
 .idea/
 .DS_Store
 node_modules/
+dist/
 
 # local-resize-img-with-vue
 local-resize-img-with-vue/upload/*
