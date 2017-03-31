@@ -4,8 +4,8 @@
 server {
         listen   80;
 
-        root /home/webmaster/www;
-        server_name subdir.cloudsing.cn;
+        root /your/www_dir;
+        server_name your.domain.com;
         index index.html index.php app.php;
 
         if ($uri ~ \.(css|png|js|gif|jpg)$) {
