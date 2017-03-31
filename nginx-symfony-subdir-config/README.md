@@ -8,17 +8,17 @@ server {
         server_name your.domain.com;
         index index.html index.php app.php;
 
-        if ($uri ~ \.(css|png|js|gif|jpg)$) {
+        if ($uri ~ \.(css|png|js|gif|jpg|mp3|mp4)$) {
                 break;
         }
 
         location /sub_dir {
-                if ($uri ~ \.(css|png|js|gif|jpg)$) {
+                if ($uri ~ \.(css|png|js|gif|jpg|mp3|mp4)$) {
                         break;
                 }
 
                 if ($uri !~ \/(app|app_dev)\.php) {
-                        rewrite ^\/(.*)\/(.*)$ /$1/app.php/$2 last;
+                        rewrite (.*)$ /mp/app.php/$1 last;
                 }
         }
 
