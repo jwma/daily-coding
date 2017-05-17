@@ -17,7 +17,11 @@
 ## SPA 在 iOS 微信端切换页面时更新标题
 [文章地址][4] 发布日期：2017-03-28
 
+## 一个简单的Vue模态弹层组件
+[项目地址][5]
+
 [1]: https://segmentfault.com/a/1190000007343788
 [2]: https://segmentfault.com/a/1190000007588905
 [3]: https://segmentfault.com/a/1190000007663214
 [4]: https://segmentfault.com/a/1190000008853962
+[5]: https://github.com/jwma/easy-modal
