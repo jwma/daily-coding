@@ -25,7 +25,7 @@
 
 [后台][6]，使用 lcobucci/jwt 库和 Symfony 自身提供是事件系统实现了一套 JWT 用户身份验证的解决方案。
 
-[前台][7]，Vue + VueRouter + Axios实现一套 JWT 用户身份验证的前端应用。
+[前台][7]，Vue + VueRouter + Vuex + Axios实现一套 JWT 用户身份验证的前端应用。
 
 
 [1]: https://segmentfault.com/a/1190000007343788
