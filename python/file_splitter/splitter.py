@@ -17,37 +17,28 @@ class Splitter(object):
         lines = []
         file_idx = 0
         file_ext = os.path.splitext(filename)[1]
-
         has_clean_line_handler = callable(clean_line_handler)
         has_mk_content_handler = callable(mk_content_handler)
 
         try:
             with open(filename, 'r') as target_file:
                 for line in target_file:
-                    if has_clean_line_handler:
-                        lines.append(clean_line_handler(line))
-                    else:
-                        lines.append(line)
+                    lines.append(clean_line_handler(line) if has_clean_line_handler else line)
 
                     if counter >= count:
-                        if has_mk_content_handler:
-                            self.__write_new_file(file_idx, mk_content_handler(lines), file_ext, **kwargs)
-                        else:
-                            self.__write_new_file(file_idx, ''.join(lines), file_ext, **kwargs)
+                        new_content = mk_content_handler(lines) if has_mk_content_handler else ''.join(lines)
+                        self.__write_new_file(file_idx, new_content, file_ext, **kwargs)
 
                         lines = []
                         counter = 1
                         file_idx += 1
-
                         continue
 
                     counter += 1
 
                 if len(lines) > 0:
-                    if has_mk_content_handler:
-                        self.__write_new_file(file_idx, mk_content_handler(lines), file_ext, **kwargs)
-                    else:
-                        self.__write_new_file(file_idx, ''.join(lines), file_ext, **kwargs)
+                    new_content = mk_content_handler(lines) if has_mk_content_handler else ''.join(lines)
+                    self.__write_new_file(file_idx, new_content, file_ext, **kwargs)
 
             return True
         except IOError as e:
