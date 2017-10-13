@@ -3,6 +3,7 @@
 node_modules/
 dist/
 
-# local-resize-img-with-vue
 local-resize-img-with-vue/upload/*
 !local-resize-img-with-vue/upload/.gitkeep
+
+python/hotqueue_demo/config.ini
