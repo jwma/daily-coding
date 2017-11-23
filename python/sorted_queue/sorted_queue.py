@@ -1,12 +1,13 @@
 import redis
+import time
 
 
 class SortedQueue(object):
     def __init__(self):
-        self.client = redis.StrictRedis()
+        self.client = redis.StrictRedis(password='asdf-1234')
 
-    def append(self, name, value, score):
-        return self.client.zadd(name, score, value)
+    def append(self, name, value):
+        return self.client.zadd(name, int(round(time.time() * 1000)), value)
 
     def first(self, name):
         rs = self.client.zrange(name, 0, 0)
@@ -24,10 +25,12 @@ class SortedQueue(object):
 
 sq = SortedQueue()
 
-name = 'wzry'
-print(sq.append(name, 'a1', 1000))
-print(sq.append(name, 'a2', 1010))
-print(sq.append(name, 'a3', 3000))
+name = 'test_queue'
+# 往队列中追加新item
+sq.append(name, 'item1')
+sq.append(name, 'item2')
 
-print(sq.first(name))
-print(sq.remove(name, sq.first(name)))
+print(sq.first(name))  # 获取队列中第一个item
+print(sq.remove(name, 'item1'))  # 删除刚刚添加的item1
+print(sq.index(name, 'item2'))  # 获取item2在队列中的索引
+print(sq.count(name))  # 获取队列长度
