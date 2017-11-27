@@ -11,7 +11,7 @@ class SortedQueue(object):
 
     def first(self, name):
         rs = self.client.zrange(name, 0, 0)
-        return bytes.decode(rs[0]) if len(rs) > 0 else None
+        return rs[0] if len(rs) > 0 else None
 
     def remove(self, name, value):
         return self.client.zrem(name, value)
