@@ -4,7 +4,7 @@ import time
 
 class SortedQueue(object):
     def __init__(self):
-        self.client = redis.StrictRedis(password='asdf-1234')
+        self.client = redis.StrictRedis(password='asdf-1234', decode_responses=True)
 
     def append(self, name, value):
         return self.client.zadd(name, int(round(time.time() * 1000)), value)
