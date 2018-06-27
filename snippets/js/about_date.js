@@ -18,11 +18,11 @@ function generateDates(startTimestamp, days, formatFunc) {
 
     for (let i = 0; i < days + 1; i++) {
         let dateHelper = new Date(startTimestamp + (i * oneDay))
-        let year = dateHelper.getFullYear()
+        let year = yearText = dateHelper.getFullYear()
         let month = monthText = dateHelper.getMonth() + 1
         let date = dateText = dateHelper.getDate()
         let day = dayText = dateHelper.getDay()
-        result.push({year, month, monthText, date, dateText, day, dayText})
+        result.push({year, yearText, month, monthText, date, dateText, day, dayText})
     }
     return typeof formatFunc === 'function' ? formatFunc(result) : result
 }
