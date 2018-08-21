@@ -18,6 +18,7 @@ docker run -i -t ubuntu:15.10  /bin/bash
 
 ## 更多
 `docker ps` 查看正在运行的容器
+`docker ps -a` 查看所有容器，包括已经停止了的容器
 
 ```
 docker run --name myapp -d -P xxx python app.py
@@ -33,3 +34,8 @@ docker run --name myapp -d -P xxx python app.py
 ## 镜像
 `docker pull xxx` 拉取一个镜像到本地
 `docker search xxx` 查找镜像
+`docker images` 查看本地镜像
+`docker rmi xxx` 删除id为xxx的本地镜像
+
+## 保存容器为新镜像
+`docker commit xxx mj/xxx` 保存xxx容器为一个名为new-xxx的镜像
