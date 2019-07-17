@@ -26,6 +26,7 @@ docker run --name myapp -d -P xxx python app.py
 - `--name` 指定了容器的名称，不指定docker会生成随机的名称
 - `-d` 让容器后台运行
 - `-P` 将容器内部使用的网络端口映射到我们使用的主机上
+  - 还有另外一种表示方法 `-p container_port:host_port`
 
 `docker stop myapp && docker rm myapp` 停止myapp容器，然后删除myapp容器
 `docker logs -f myapp` 查看myapp容器日志，`-f`参数效果如同`tail -f`
@@ -39,3 +40,8 @@ docker run --name myapp -d -P xxx python app.py
 
 ## 保存容器为新镜像
 `docker commit xxx mj/xxx` 保存xxx容器为一个名为new-xxx的镜像
+
+## 删除 none 镜像
+`docker images --filter "dangling=true" -q --no-trunc`
+
+`docker rmi $(docker images --filter "dangling=true" -q --no-trunc)`
