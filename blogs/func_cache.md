@@ -41,7 +41,7 @@ class HomeView(views.APIView):
 - 方便使用
 - 函数级别的缓存
 
-`Django` `cache_page` 也好， `drf-extensions` 的 `cache_response` 也好，都是针对 `view` 的，而我觉得，更通用的缓存还是针对函数来做比较合适。
+`Django` 的 `cache_page` 也好， `drf-extensions` 的 `cache_response` 也好，都是针对 `view` 的，而我觉得，更通用的缓存还是针对函数来做比较合适。
 
 在项目中，我们都会用分层思想来组织我们的代码，在业务逻辑层中，无论我们是直接在模块写函数还是通过封装类，我们的重点都是要实现业务逻辑，而函数，几乎是所有编写业务逻辑的场所，无论是纯函数，还是类的实例函数又或是类的静态函数，这些都是函数，我们如果能方便的针对函数进行缓存，那么我们就可以轻松控制缓存的粒度，再结合具体业务场景分析，更是可以提高缓存的命中率。
 
@@ -73,10 +73,11 @@ def default_key_func(method, *args, **kwargs):
 
 def func_cache(key_func=None, key_prefix=None, update_result_func=None, expires=30):
     """ 
-    方法的cache 
-    :param key_func: 生成cache_key的方法 
-    :param key_prefix: 缓存的key前缀 
-    :param update_result_func: 获取到缓存之后回调更新不需要缓存的字段 :param expires: 缓存过期时间，单位秒 
+    function cache
+    :param key_func: 生成 cache_key 的方法 
+    :param key_prefix: 缓存的 key 前缀 
+    :param update_result_func: 获取到缓存之后回调更新不需要缓存的字段
+    :param expires: 缓存过期时间，单位秒 
     :return: 
     """
 
@@ -104,22 +105,22 @@ def func_cache(key_func=None, key_prefix=None, update_result_func=None, expires=
 if __name__ == '__main__':
 
     @func_cache()
-    def get_article(limit):
+    def get_articles(limit):
         result = []
         for x in range(limit):
             result.append({'title': x})
         return result
 
-    rs1 = get_article(10)
+    rs1 = get_articles(10)
     print(rs1)
 
-    rs1 = get_article(20)
+    rs1 = get_articles(20)
     print(rs1)
 ```
 
 大致浏览代码，会发现好像没什么特别，的确，整体的实现都不复杂，但我还是想说说其中的 `default_key_func` 的作用及实现。
 
-众所周知，我们要获取某个缓存，都是通过 `key` 去获取的，而这个 `key` 的值具体是什么呢？试想一下，如果我们使用同一个 `key` 对某个函数进行缓存会发生什么问题：
+都知道我们要获取某个缓存，都是通过 `key` 去获取的，而这个 `key` 的值具体是什么呢？试想一下，如果我们使用同一个 `key` 对某个函数进行缓存会发生什么问题：
 - 如果函数逻辑不需要使用任何外界参数，则不存在任何问题；
 - 如果函数逻辑的运行依赖外界的输入参数，而 `key` 永远都不变的话，就会发生返回结果与输入参数不匹配的问题。
 
@@ -137,11 +138,11 @@ if __name__ == '__main__':
 需要使用缓存的地方，一般都有一些共同点：
 - 热点数据；
 - 被缓存的数据实时性一般要求不高；
-- 产生需要被缓存的数据一般耗时较长，无论是计算导致的耗时还是网络IO导致的耗时。
+- 产生需要被缓存的数据一般耗时较长，无论是计算导致的耗时还是网络 IO 导致的耗时。
 
 缓存用不好可能更糟糕：
 - 为命中率不高的数据设置缓存，单次请求后几乎不可能被再次访问到的数据，不但浪费首次查询、计算和设置缓存的时间，还占用缓存服务空间；
-- 为原本就可以快速查询、计算的数据设置缓存，若缓存的数据本身可以快速得到，甚至比从缓存读取的速度还快，那无疑就是浪费；
+- 为原本就可以快速查询、计算的数据设置缓存，若缓存的数据本身可以快速获得，甚至比从缓存读取的速度还快，那无疑就是浪费；
 - 缓存粒度没控制好，很容易造成命中率降低，一旦命中率降低，那么缓存的数据无疑就是无用的。
 
 使用缓存时，一定要结合业务场景，分析出哪些是热点数据，什么样的粒度比较合适，缓存多久合适，总之不要盲目的使用缓存。
