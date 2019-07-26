@@ -1,6 +1,6 @@
 # Daily coding
 
-This project records the bits and pieces of my daily coding. I will put some code snippets, project demos, technical solutions, notes, articles, etc. here.
+This project records the bits and pieces of my daily coding. I will put some code snippets, project demos, technical solutions, notes, blogs, etc. here.
 
 ## Other languages
 - [Chinese](README.zh_cn.md "Chinese READEMD")
