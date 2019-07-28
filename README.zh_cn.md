@@ -14,6 +14,5 @@
 ├── README.zh_cn.md                 # 中文 README
 ├── blogs                           # 博客文章
 ├── notes                           # 笔记
-├── snippets                        # 代码片段
-└── wechat-app                      # 微信小程序相关
+└── snippets                        # 代码片段
 ```
