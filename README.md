@@ -15,6 +15,5 @@ Each subproject has its own README to explain how to deploy themself.
 ├── README.zh_cn.md                 # Chinese ver README
 ├── blogs                           # Blogs and articles
 ├── notes
-├── snippets
-└── wechat-app                      # Wechat mini program codes
+└── snippets
 ```
