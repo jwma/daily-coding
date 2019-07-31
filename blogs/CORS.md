@@ -4,7 +4,7 @@ CORS 即跨资源共享，是一种机制，它使用额外的 HTTP 头来告诉
 简单来说，出于安全原因，浏览器会限制从脚本内发起的跨域请求，如 XMLHttpRequest 和 Fetch。也就是说，在 Javascript 中，当我们想发起一个跨域的 Ajax 请求，会受到浏览器的限制导致请求失败。
 
 举个例子：
-在 http://mysite.com/index.html 中，发起一个 Ajax 请求到 http://api.yoursite.com/article/all/，会失败，如果打开控制台看日志，会看到类似如下的输出：
+在 http://mysite.com/index.html 中，发起一个 Ajax 请求到 http://api.yoursite.com/article/all/ ，会失败，如果打开控制台看日志，会看到类似如下的输出：
 ```
 Access to XMLHttpRequest at 'http://api.yoursite.com/article/all/' from origin 'http://mysite.com' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
 ```
