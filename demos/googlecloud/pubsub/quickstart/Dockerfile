@@ -1,5 +1,7 @@
-FROM google/cloud-sdk
+FROM python:3.7
 
-EXPOSE 8085
+WORKDIR /app
+COPY . .
+RUN pip --no-cache-dir install google-cloud-pubsub
 
-CMD ["gcloud", "beta", "emulators", "pubsub", "start", "--host-port", "0.0.0.0:8085"]
+CMD ["python3"]

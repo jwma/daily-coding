@@ -1,7 +1,16 @@
 # quickstart
 
 ### Build
-`docker build -t pubsub .`
+`docker-compose up -d --build`
 
-### Run
-`docker run --rm --name mypubsub -p 8085:8085 pubsub`
+### Start a subscriber
+`docker-compose run demo python pubsub.py start_subscriber`
+
+If any message is received, it will be printed out.
+
+### Publish message
+Publish "hello" message.
+` docker-compose run demo python pubsub.py publish hello`
+
+Publish "hi" message.
+` docker-compose run demo python pubsub.py publish hi`

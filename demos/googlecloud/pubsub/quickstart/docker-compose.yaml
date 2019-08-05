@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  # PubSub emulator container
+  pubsub-emulator:
+    image: google/cloud-sdk
+    ports:
+      - "8085:8085"
+    command: ["gcloud", "beta", "emulators", "pubsub", "start", "--host-port", "0.0.0.0:8085"]
+
+  demo:
+    build: .
+    depends_on:
+      - pubsub-emulator
+    environment:
+      - PUBSUB_EMULATOR_HOST=pubsub-emulator:8085
+    volumes:
+      - .:/app
