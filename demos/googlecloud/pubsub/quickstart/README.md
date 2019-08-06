@@ -1,5 +1,8 @@
 # quickstart
 
+### Other language
+- [Chinese](README.zh_cn.md "Chinese README")
+
 ### Build
 `docker-compose up -d --build`
 
