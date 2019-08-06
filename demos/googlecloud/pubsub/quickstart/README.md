@@ -10,7 +10,10 @@ If any message is received, it will be printed out.
 
 ### Publish message
 Publish "hello" message.
-` docker-compose run demo python pubsub.py publish hello`
+`docker-compose run demo python pubsub.py publish hello`
 
 Publish "hi" message.
-` docker-compose run demo python pubsub.py publish hi`
+`docker-compose run demo python pubsub.py publish hi`
+
+### Down
+`docker-compose down -v`
