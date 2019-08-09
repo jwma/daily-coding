@@ -1,4 +1,4 @@
-FROM python:3.7
+FROM studiomj/py-pgsql
 
 RUN pip install requests
 
